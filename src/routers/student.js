@@ -3,16 +3,16 @@ const Student = require('../models/student')
 const router = new express.Router()
 const path = require('path')
 
-// const dirpath = path.join(__dirname,'../public/create-student.html')
-// router.get('/api/students',(req,res)=>{
-//     res.sendFile(dirpath)
+const dirpath = path.join(__dirname,'../public/create-student.html')
+router.get('/api/students',(req,res)=>{
+    res.sendFile(dirpath)
  
-// })
+})
 
 
 
 //create new student
-router.post('/api/students',async (req,res)=>{
+router.post('/web/students/create',async (req,res)=>{
     const student = new Student(req.body)
 
     try {
@@ -28,7 +28,7 @@ router.post('/api/students',async (req,res)=>{
 
 //read all students
 
-router.get('/api/students',async (req,res)=>{
+router.get('/web/students/read',async (req,res)=>{
     
     try{
         const students = await Student.find({})
@@ -45,7 +45,7 @@ router.get('/api/students',async (req,res)=>{
 })
 
 //read a student with code
-router.get('/api/students/:code',async (req,res)=>{
+router.get('/web/students/read/:code',async (req,res)=>{
     
     const code =req.params.code
     try{
@@ -63,7 +63,7 @@ router.get('/api/students/:code',async (req,res)=>{
 })
 //update students with its code
 
-router.patch('/api/students/:code',async (req,res)=>{
+router.patch('/web/students/update/:code',async (req,res)=>{
     const updates = Object.keys(req.body)
     const allowedUpdates = ["name","code"]
     const isValidOperation = updates.every((update)=> allowedUpdates.includes(update))
@@ -93,7 +93,7 @@ router.patch('/api/students/:code',async (req,res)=>{
 
 //delete student with its code
 
-router.delete('/api/students/:code',async (req,res)=>{
+router.delete('/web/students/delete/:code',async (req,res)=>{
     const code = req.params.code
     try{
         const student = await Student.findOneAndDelete(code)
