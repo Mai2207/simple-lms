@@ -3,9 +3,9 @@ const Student = require('../models/student')
 const router = new express.Router()
 const path = require('path')
 
-const dirpath = path.join(__dirname,'../public/create-student.html')
+
 router.get('/api/students',(req,res)=>{
-    res.sendFile(dirpath)
+    res.sendFile(__dirname+'../public/create-student.html')
  
 })
 
