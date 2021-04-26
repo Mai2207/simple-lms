@@ -10,6 +10,7 @@ const path = require('path')
 // })
 
 
+
 //create new student
 router.post('/api/students',async (req,res)=>{
     const student = new Student(req.body)
