@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Lms</title>
+    
+    <link rel="stylesheet" href="../css/styles.css"> 
+    
+
+  </head> 
+  <body>
+    <div class="main-content">
+     
+      <h1>Create Course</h1>
+
+      <form action="http://localhost:3000/api/courses" method="POST">
+        <h2>Enter course name, code and description</h2>
+        <div>
+          <label for="Name">Name</label>
+          <input name="name" placeholder="Course Name">
+        </div>
+        <div> 
+            <label for="Code">Code</label>
+            <input name="code" placeholder="Course Code">
+        </div>
+        <div> 
+            <label for="Description">Description</label>
+            <textarea class="description" name="description" placeholder="Write description.." style="height:200px"></textarea>
+    </div>
+        </div>
+    
+        <button>Submit</button>
+
+      </form>
+      
+
+      
+    </div>
+    
+    
+    
+  </body>
+   
+</html>
