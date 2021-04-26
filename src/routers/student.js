@@ -1,18 +1,12 @@
 const express =require('express')
 const Student = require('../models/student')
 const router = new express.Router()
-const path = require('path')
 
-
-router.get('/api/students',(req,res)=>{
-    res.sendFile(__dirname+'../public/create-student.html')
- 
-})
 
 
 
 //create new student
-router.post('/web/students/create',async (req,res)=>{
+router.post('/api/students/create',async (req,res)=>{
     const student = new Student(req.body)
 
     try {
@@ -28,7 +22,7 @@ router.post('/web/students/create',async (req,res)=>{
 
 //read all students
 
-router.get('/web/students/read',async (req,res)=>{
+router.get('/api/students/read',async (req,res)=>{
     
     try{
         const students = await Student.find({})
@@ -45,7 +39,7 @@ router.get('/web/students/read',async (req,res)=>{
 })
 
 //read a student with code
-router.get('/web/students/read/:code',async (req,res)=>{
+router.get('/api/students/read/:code',async (req,res)=>{
     
     const code =req.params.code
     try{
@@ -63,7 +57,7 @@ router.get('/web/students/read/:code',async (req,res)=>{
 })
 //update students with its code
 
-router.patch('/web/students/update/:code',async (req,res)=>{
+router.patch('/api/students/update/:code',async (req,res)=>{
     const updates = Object.keys(req.body)
     const allowedUpdates = ["name","code"]
     const isValidOperation = updates.every((update)=> allowedUpdates.includes(update))
@@ -93,7 +87,7 @@ router.patch('/web/students/update/:code',async (req,res)=>{
 
 //delete student with its code
 
-router.delete('/web/students/delete/:code',async (req,res)=>{
+router.delete('/api/students/delete/:code',async (req,res)=>{
     const code = req.params.code
     try{
         const student = await Student.findOneAndDelete(code)
