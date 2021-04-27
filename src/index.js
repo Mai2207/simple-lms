@@ -11,14 +11,15 @@ const publicDirectoryPath=path.join(__dirname,'../public')
 
 
 app.use(bodyParser.urlencoded({extended:false}))
-app.use(express.static(publicDirectoryPath))
 app.use(express.json())
 app.use(studentRouter)
 app.use(courseRouter)
-
+app.use('/',express.static(publicDirectoryPath))
 
 
 app.listen(port ,()=>{
     console.log('Server is up on port ' + port)
+   
+    
    
 })

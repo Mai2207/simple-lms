@@ -5,7 +5,6 @@ const router = new express.Router()
 
 
 
-
 //create new course
 router.post('/api/courses/create',async (req,res)=>{
     const course = new Course(req.body)
