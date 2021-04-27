@@ -5,7 +5,7 @@ const path = require('path')
 
 router.get('/web/students/create',(req,res)=>{
     res.sendFile(path.join(__dirname,'../public/create-student.html'))
-    
+
 })
 
 //create new student
@@ -15,7 +15,7 @@ router.post('/api/students/create',async (req,res)=>{
 
     try {
         await student.save()
-        res.status(201).send(student)
+        res.status(201).send('Student created successfully!')
         
     } catch(e){
         res.status(400).send(e)

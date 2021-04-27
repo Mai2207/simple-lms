@@ -15,7 +15,7 @@ router.post('/api/courses/create',async (req,res)=>{
 
     try {
         await course.save()
-        res.status(201).send(course)
+        res.status(201).send('Student created successfully!')
     } catch(e){
         res.status(400).send(e)
 
