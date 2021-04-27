@@ -1,12 +1,16 @@
 const express =require('express')
 const Student = require('../models/student')
 const router = new express.Router()
+const path = require('path')
 
-
-
+router.get('/web/students/create',(req,res)=>{
+    res.sendFile(path.join(__dirname,'../public/create-student.html'))
+    
+})
 
 //create new student
 router.post('/api/students/create',async (req,res)=>{
+    
     const student = new Student(req.body)
 
     try {

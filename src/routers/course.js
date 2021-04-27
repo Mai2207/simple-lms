@@ -1,8 +1,12 @@
 const express =require('express')
 const Course = require('../models/course')
 const router = new express.Router()
+const path = require('path')
 
-
+router.get('/web/courses/create',(req,res)=>{
+    res.sendFile(path.join(__dirname,'../public/create-course.html'))
+    
+})
 
 
 //create new course
