@@ -1,14 +1,28 @@
 const {MongoClient,ObjectID}=require('mongodb')
 
-const connectionURL='mongodb://127.0.0.1:27017'
-const databaseName='Lms'
+const connectionURL='mongodb+srv://mai:mai.2207@cluster0.gthna.mongodb.net/LmsDatabase?retryWrites=true&w=majority'
 
 
 
-MongoClient.connect(connectionURL,{ useNewUrlParser:true },(error, client) =>{
-    if(error) {
-        return console.log('Unable to connect to database')
+
+const client = new MongoClient(connectionURL);
+ 
+ // The database to use
+ const dbName = "LmsDatabase";
+                      
+ async function run() {
+    try {
+         await client.connect();
+         console.log("Connected correctly to server");
+         const db = client.db(dbName);
+         
+         
+        } catch (err) {
+         console.log(err.stack);
+     }
+ 
+     finally {
+        await client.close();
     }
-    
-    const db = client.db(databaseName)
-})
+}
+run().catch(console.dir);

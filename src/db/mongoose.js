@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-mongoose.connect('mongodb://127.0.0.1:27017/Lms',{
+mongoose.connect('mongodb+srv://mai:mai.2207@cluster0.gthna.mongodb.net/LmsDatabase?retryWrites=true&w=majority',{
     useNewUrlParser : true , 
     useCreateIndex : true,
     useFindAndModify:false

@@ -14,8 +14,8 @@ router.post('/api/students/create',async (req,res)=>{
     const student = new Student(req.body)
 
     try {
-        await student.save()
-        res.status(201).send('Student created successfully!')
+        await student.save(student)
+        res.status(201).send(student)
         
     } catch(e){
         res.status(400).send(e)
